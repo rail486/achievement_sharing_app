@@ -1,0 +1,19 @@
+<h1>Timeline</h1>
+
+<table>
+    <tr>
+        <th>利用者ID</th>
+        <th>日付</th>
+        <th>内容</th>
+        <th>達成度</th>
+    </tr>
+
+    <% @tasks.each do |task| %>
+     <tr>
+        <td><%= task.user.user.userid %></td>
+        <td><%= task.date %></td>
+        <td><%= task.content %></td>
+        <td><%= task.achievement %>%</td>
+     </tr>
+    <% end %>
+</table>
