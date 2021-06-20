@@ -1,2 +1,6 @@
-<% provide(:title, 'マイページ') %>
-<%= @user.name %> / @<%= @user.uid %>
+<% provide(:title, 'プロフィール') %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= current_user.name %> / @<%= current_user.uid %>
+  </div>
+</div>
