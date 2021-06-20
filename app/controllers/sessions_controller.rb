@@ -3,10 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(uid: params[:session][:uid])
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      redirect_to user
+    @user = User.find_by(uid: params[:session][:uid])
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
+      if params[:session][:remember_me] == "1"
+        remember(@user)
+      else
+        forget(@user)
+      end
+      redirect_to @user
     else
       flash.now[:danger] = 'IDまたはパスワードが正しくありません'
       render 'new'
@@ -14,7 +19,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    if logged_in?
+      log_out
+    end
     redirect_to "/"
   end
 end
