@@ -1,0 +1,88 @@
+<!--
+<div class="notifications">
+    <div class="notice">
+        <%= flash[:notice] %>
+    </div>
+    <div class="alert">
+        <%= flash[:alert] %>
+    </div>
+</div>
+-->
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-dismissible fade show" role="alert">
+    <%= value.html_safe %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+<!--
+<% flash.each do |key, value| %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <%= flash[:alert] %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>
+-->
+<h1 class="display-2">タスク編集</h1>
+
+<ul class="list-group" style="width: 12rem;">
+  <!--<li class="list-group-item">利用者ID : <%= current_user.userid %></li>-->
+  <li class="list-group-item h5">日付 : <%= session[:date] %></li>
+</ul>
+<br>
+<p>
+  <%= link_to "戻る", tasklist_path(session[:date]), class: "btn btn-success" %>
+  <%= link_to "追加", new_task_path(session[:date]), class: "btn btn-success" %>
+</p>
+<br>
+
+
+<h4>【未共有タスク】</h4>
+
+<table class="table table-striped table-success">
+  <thead>
+    <tr>
+      <th scope="col">完了</th>
+      <th scope="col" class="w-50">内容</th>
+      <th scope="col">達成度</th>
+      <th scope="col">共有状況</th>
+      <th scope="col" class="w-25">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @unshared_tasks.each do |task| %>
+      <tr>
+        <td><%= link_to('✓', [ :finish, task], :method => :patch, class: "btn btn-success btn-sm #{ 'disabled' if task.achievement == 100}") %></td>
+        <td><%= task.content %></td>
+        <td><%= task.achievement %>%</td>
+        <td><%= task.share %></td>
+        <td><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有する', [ :share, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h4>【共有中タスク】</h4>
+<table class="table table-striped table-success">
+  <thead>
+    <tr>
+      <th scope="col">完了</th>
+      <th scope="col" class="w-50">内容</th>
+      <th scope="col">達成度</th>
+      <th scope="col">共有状況</th>
+      <th scope="col" class="w-25">操作</th>
+  </tr>
+  </thead>
+  <tbody>
+    <% @shared_tasks.each do |task| %>
+      <tr>
+        <td><%= link_to('✓', [ :finish, task], :method => :patch, class: "btn btn-success btn-sm #{ 'disabled' if task.achievement == 100}") %></td>
+        <td><%= task.content %></td>
+        <td><%= task.achievement %>%</td>
+        <td><%= task.share %></td>
+        <td><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有しない', [ :unshare, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
