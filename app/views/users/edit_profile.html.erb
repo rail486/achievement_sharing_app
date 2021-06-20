@@ -1,0 +1,22 @@
+<% provide(:title, 'プロフィール変更') %>
+<h1 class="center mt-3">プロフィール変更</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+
+    <%= form_for @user, url: {action: "update_profile"} do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <div class="form-group">
+        <%= f.label :name, "表示名" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :uid, "ID" %>
+        <%= f.text_field :uid, class: 'form-control' %>
+      </div>
+
+      <%= f.submit "保存", class: "btn btn-success btn-block" %>
+    <% end %>
+  </div>
+</div>
