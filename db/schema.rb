@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_18_082414) do
+ActiveRecord::Schema.define(version: 2021_06_20_123034) do
 
   create_table "tasks", force: :cascade do |t|
     t.date "date"
     t.string "content"
-    t.integer "achievement"
+    t.integer "achievement", default: 0
     t.boolean "share"
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_06_18_082414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.string "remember_digest"
   end
 
   add_foreign_key "tasks", "users"
