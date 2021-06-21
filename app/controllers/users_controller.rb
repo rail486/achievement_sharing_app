@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password]
+  before_action :correct_user,   only: [:edit_profile, :update_profile, :edit_password, :update_password]
+
   def show
     @user = User.find(params[:id])
   end
@@ -61,5 +64,18 @@ class UsersController < ApplicationController
 
     def password_params
       params.require(:user).permit(:password, :password_confirmation)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください"
+        redirect_to "/login"
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to "/" unless @user == current_user
     end
 end
