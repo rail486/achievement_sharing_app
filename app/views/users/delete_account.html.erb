@@ -1,0 +1,13 @@
+<% provide(:title, 'アカウント削除') %>
+<h1 class="center mt-3 mb-5">アカウント削除</h1>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_tag({controller:"users", action:"destroy"}, method: :delete) do %>
+      <div class="form-group">
+        <%= label_tag "パスワード" %>
+        <%= password_field_tag :password, nil, class: "form-control" %>
+      </div>
+      <%= submit_tag "削除", class: "btn btn-danger btn-block" %>
+    <% end %>
+  </div>
+</div>
