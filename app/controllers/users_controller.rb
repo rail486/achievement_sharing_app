@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
   before_action :correct_user,   only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
 
+  def index
+    @users = User.search(params[:search]).paginate(page: params[:page], per_page: 10)
+  end
+
   def show
     @user = User.find(params[:id])
   end
