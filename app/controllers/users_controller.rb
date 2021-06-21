@@ -58,10 +58,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user && @user.authenticate(params[:password])
       @user.destroy
-      redirect_to "/"
+      session[:deleted] = true
+      redirect_to "/deleted"
     else
       flash.now[:danger] = 'パスワードが正しくありません'
       render 'delete_account'
+    end
+  end
+
+  def deleted
+    if session[:deleted]
+      session[:deleted] = nil
+    else
+      redirect_to "/"
     end
   end
 

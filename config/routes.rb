@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get     '/users/:id/edit_profile'   => 'users#edit_profile'
   get     '/users/:id/edit_password'  => 'users#edit_password'
   get     '/users/:id/delete_account' => 'users#delete_account'
+  get     '/deleted'                  => 'users#deleted'
   get     '/login'                    => 'sessions#new'
   post    '/login'                    => 'sessions#create'
   delete  '/logout'                   => 'sessions#destroy'
