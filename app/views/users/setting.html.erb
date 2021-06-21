@@ -4,7 +4,8 @@
   <div class="col-md-6 offset-md-3">
     <div class="mt-5">
       <%= link_to "プロフィール変更", "/users/#{current_user.id}/edit_profile", class: "btn btn-success btn-block mb-5" %>
-      <%= link_to "パスワード変更", "/users/#{current_user.id}/edit_password", class: "btn btn-success btn-block" %>
+      <%= link_to "パスワード変更", "/users/#{current_user.id}/edit_password", class: "btn btn-success btn-block mb-5" %>
+      <%= link_to "アカウント削除", "/users/#{current_user.id}/delete_account", class: "btn btn-danger btn-block" %>
     </div>
   </div>
 </div>
