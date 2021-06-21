@@ -1,6 +1,8 @@
 <% provide(:title, 'プロフィール') %>
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <%= current_user.name %> / @<%= current_user.uid %>
+    <%= @user.name %> / @<%= @user.uid %>
+    <br>
+    [<%= @user.introduction %>]
   </div>
 </div>
