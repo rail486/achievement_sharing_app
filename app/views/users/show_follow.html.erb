@@ -19,9 +19,9 @@
       <ul class="users follow">
         <% @users.each do |user| %>
         <div class="border border-success rounded mb-3 pl-2">
-          <h5 class="mb-0 pt-1"><b><%= link_to user.name, user %></b></h5>
+          <b class="mb-0 pt-1"><%= link_to user.name, user %></b>
           <p class="mb-1">@<%= user.uid %></p>
-        </div>    
+        </div>
       <% end %>
       </ul>
       <%= will_paginate @users %>
