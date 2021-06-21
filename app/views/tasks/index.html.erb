@@ -14,14 +14,7 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% end %>
-<!--
-<% flash.each do |key, value| %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <%= flash[:alert] %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<% end %>
--->
+
 <h1 class="display-2">タスク編集</h1>
 
 <ul class="list-group" style="width: 12rem;">
@@ -52,10 +45,10 @@
     <% @unshared_tasks.each do |task| %>
       <tr>
         <td><%= link_to('✓', [ :finish, task], :method => :patch, class: "btn btn-success btn-sm #{ 'disabled' if task.achievement == 100}") %></td>
-        <td><%= task.content %></td>
+        <td class="w-50"><%= task.content %></td>
         <td><%= task.achievement %>%</td>
         <td><%= task.share %></td>
-        <td><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有する', [ :share, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
+        <td class="w-25"><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有する', [ :share, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
       </tr>
     <% end %>
   </tbody>
@@ -78,10 +71,10 @@
     <% @shared_tasks.each do |task| %>
       <tr>
         <td><%= link_to('✓', [ :finish, task], :method => :patch, class: "btn btn-success btn-sm #{ 'disabled' if task.achievement == 100}") %></td>
-        <td><%= task.content %></td>
+        <td class="w-50"><%= task.content %></td>
         <td><%= task.achievement %>%</td>
         <td><%= task.share %></td>
-        <td><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有しない', [ :unshare, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
+        <td class="w-25"><%= link_to '編集', edit_task_path(task), class: "btn btn-success btn-sm" %> | <%= link_to('削除', task, :method => :delete, class: "btn btn-success btn-sm", data: { confirm: '本当に削除しますか？' }) %> | <%= link_to('共有しない', [ :unshare, task], :method => :patch, class: "btn btn-success btn-sm") %></td>
       </tr>
     <% end %>
   </tbody>

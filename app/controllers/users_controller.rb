@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
+  before_action :correct_user,   only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
+
   def show
     @user = User.find(params[:id])
   end
@@ -48,6 +51,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete_account
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    if @user && @user.authenticate(params[:password])
+      @user.destroy
+      redirect_to "/"
+    else
+      flash.now[:danger] = 'パスワードが正しくありません'
+      render 'delete_account'
+    end
+  end
+
   private
 
     def user_params
@@ -61,5 +78,18 @@ class UsersController < ApplicationController
 
     def password_params
       params.require(:user).permit(:password, :password_confirmation)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "ログインしてください"
+        redirect_to "/login"
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to "/" unless @user == current_user
     end
 end
