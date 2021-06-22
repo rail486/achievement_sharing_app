@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   #timeline
   get     'tasklist'                  => 'tasklists#index'
-  #get     'calendar'                  => 'calendars#index'
+  get     'calendar'                  => 'calendars#index'
 
   resources :users do
     member do
