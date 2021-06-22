@@ -11,6 +11,34 @@ class TasksController < ApplicationController
     @shared_tasks = current_user.tasks.where(date: session[:date]).where(share: true)
   end
 
+  def new
+    @task = current_user.tasks.build()
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def create
+    @task = current_user.tasks.build(task_params)
+    @task.date = session[:date]
+    @task.share = false
+    if @task.save
+      redirect_to tasks_path(session[:date])
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+      redirect_to tasks_path(session[:date])
+    else
+      render 'edit'
+    end
+  end
+  
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
