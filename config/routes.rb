@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get     '/login'                    => 'sessions#new'
   post    '/login'                    => 'sessions#create'
   delete  '/logout'                   => 'sessions#destroy'
+  
+  #timeline
+  get     'tasklist'                  => 'tasklists#index'
+  #get     'calendar'                  => 'calendars#index'
+
   resources :users do
     member do
       patch :update_profile
