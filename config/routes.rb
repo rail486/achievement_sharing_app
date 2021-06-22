@@ -13,8 +13,8 @@ Rails.application.routes.draw do
   delete  '/logout'                   => 'sessions#destroy'
   
   #timeline
+  get     'timeline'                  => 'timelines#index'
   get     'tasklist'                  => 'tasklists#index'
-  get     'calendar'                  => 'calendars#index'
 
   resources :users do
     member do
