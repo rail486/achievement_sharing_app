@@ -13,13 +13,4 @@ class RelationshipsController < ApplicationController
     redirect_to user
   end
 
-  private
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to "/login"
-      end
-    end
 end
