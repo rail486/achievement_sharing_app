@@ -10,7 +10,7 @@
 
     <% @tasks.each do |task| %>
      <tr>
-        <td><%= task.user.user.userid %></td>
+        <td><%= task.user.user.uid %></td>
         <td><%= link_to task.date, tasklist_path(task[:date]) %></td>
         <td><%= task.content %></td>
         <td><%= task.achievement %>%</td>
@@ -18,4 +18,4 @@
     <% end %>
 </table>
 
-<%= link_to "戻る", calendar_path(session[:userid]), class: "btn btn-success" %>
+<%= link_to "戻る", calendar_path(session[:uid]), class: "btn btn-success" %>
