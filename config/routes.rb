@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'calendars/index'
-  get 'timelines/index'
   root    'top_pages#home'
   get     '/signup'                   => 'users#new'
   get     '/settings'                 => 'users#setting'
@@ -14,9 +12,9 @@ Rails.application.routes.draw do
   
   #timeline
   get     'timeline'                  => 'timelines#index'
-  get     'tasklist'                  => 'tasklists#index'
+  get     'tasklist'                  => 'tasks#tasklist'
 
-
+  get 'calendar' => 'calendars#index'
   get 'taskedit' => 'tasks#index'
 
   resources :users do
