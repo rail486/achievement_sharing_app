@@ -1,5 +1,5 @@
 class TimelinesController < ApplicationController
   def index
-    @tasks = Task.where(share: true)
+    @tasks = current_user.feed.where(share, true).paginate(page: params[:page])
   end
 end
