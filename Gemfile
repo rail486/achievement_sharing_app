@@ -56,3 +56,8 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate-bootstrap4'
+gem 'rexml'
+
+group :development, :test do
+  gem 'rspec-rails'
+end
