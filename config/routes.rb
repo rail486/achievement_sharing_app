@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'calendars/index'
   get 'timelines/index'
   root    'top_pages#home'
   get     '/signup'                   => 'users#new'

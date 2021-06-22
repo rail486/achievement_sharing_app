@@ -1,7 +1,8 @@
 @import "bootstrap";
-
+@import "simple_calendar";
 @import "top_pages";
 @import "users";
+
 
 body {
   padding-top: 60px;
@@ -36,3 +37,4 @@ textarea {
     margin: auto;
   }
 }
+
