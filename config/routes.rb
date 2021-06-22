@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     member do
       patch :update_profile
       patch :update_password
+      get :following
+      get :followers
     end
   end
+  resources :relationships, only: [:create, :destroy]
 end

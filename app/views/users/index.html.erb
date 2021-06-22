@@ -1,0 +1,23 @@
+<% provide(:title, 'ユーザ一覧') %>
+<div class="row mt-5">
+  <div class="col-md-6 offset-md-3">
+    <div class="input-group form-inline justify-content-center mb-5">
+      <div class="input-group-prepend">
+        <span class="input-group-text">@</span>
+      </div>
+      <%= form_tag(users_path,:method => 'get') do %>
+        <%= text_field_tag :search, nil, class: "form-control rounded-0" %>
+        <%= submit_tag 'Search', :name => nil, class: "btn btn-outline-success" %>
+      <% end %>
+    </div>
+    <ul class="users">
+      <% @users.each do |user| %>
+        <div class="border border-success rounded mb-3 pl-2">
+          <b class="mb-0 pt-1"><%= link_to user.name, user %></b>
+          <p class="mb-1">@<%= user.uid %></p>
+        </div>
+      <% end %>
+    </ul>
+    <%= will_paginate @users %>
+  </div>
+</div>
