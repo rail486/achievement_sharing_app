@@ -16,12 +16,22 @@ Rails.application.routes.draw do
   get     'timeline'                  => 'timelines#index'
   get     'tasklist'                  => 'tasklists#index'
 
+
+  get 'taskedit' => 'tasks#index'
+
   resources :users do
     member do
       patch :update_profile
       patch :update_password
       get :following
       get :followers
+    end
+  end
+  resources :tasks do
+    member do
+      patch :finish
+      patch :share
+      patch :unshare
     end
   end
   resources :relationships, only: [:create, :destroy]
