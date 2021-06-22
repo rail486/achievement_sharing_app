@@ -57,6 +57,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate-bootstrap4'
 gem 'rexml'
+gem 'simple_calendar','~>2.4'
 
 group :development, :test do
   gem 'rspec-rails'
