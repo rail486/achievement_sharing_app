@@ -102,17 +102,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :uid, :introduction)
     end
 
-
     def password_params
       params.require(:user).permit(:password, :password_confirmation)
-    end
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to "/login"
-      end
     end
 
     def correct_user
