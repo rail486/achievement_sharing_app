@@ -1,9 +1,10 @@
 <h1>Timeline</h1>
 
+
 <table class = "timetable">
     <tr class = "nowrap">
-        <th>利用者ID</th>
         <th>名前</th>
+        <th>ID</th>
         <th>日付</th>
         <th>内容</th>
         <th>達成度</th>
@@ -11,7 +12,8 @@
 
     <% @tasks.each do |task| %>
      <tr>
-        <td><%= task.user.name %></td>
+        <td><%= link_to task.user.name, task.user %></td>
+        <td><%= task.user.uid %></td>
         <td><%= link_to task.date, tasklist_path(task[:date]) %></td>
         <td><%= task.content %></td>
         <td><%= task.achievement %>%</td>
