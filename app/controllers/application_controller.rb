@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  add_flash_types :primary, :danger
+  add_flash_types :success, :danger
 
   private
 
