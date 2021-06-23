@@ -1,14 +1,12 @@
 class TasksController < ApplicationController
-  #
+
   def index
-    @unshared_tasks = current_user.tasks.where(date: session[:date]).where(share: false)
-    @shared_tasks = current_user.tasks.where(date: session[:date]).where(share: true)
+    @tasks = current_user.tasks.where(date: session[:date])
   end
 
   def tasklist
     session[:date] = params[:format]
-    @unshared_tasks = current_user.tasks.where(date: session[:date]).where(share: false)
-    @shared_tasks = current_user.tasks.where(date: session[:date]).where(share: true)
+    @tasks = current_user.tasks.where(date: session[:date])
   end
 
   def new
