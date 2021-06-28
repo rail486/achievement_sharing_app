@@ -2,8 +2,14 @@
 <div class="row">
   <div class="col-md-4 offset-md-1">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
-      <h5 class="mb-0 pt-1"><b><%= @user.name %></b></h5>
-      <p class="mb-1">@<%= @user.uid %></p>
+      <b class="mb-0 pt-1">
+        <p class="name">
+          <%= @user.name %>
+        </p>
+      </b>
+      <p class="mb-1">
+        @<%= @user.uid %>
+      </p>
       <div class="mb-1">
         <%= @user.introduction %>
       </div>
@@ -14,15 +20,21 @@
     <%= render 'follow_form' if logged_in? %>
   </div>
   <div class="col-md-6">
-    <h3 class="center mt-5"><%= @title %></h3>
+    <p class="center mt-5" id="subt">
+      <%= @title %>
+    </p>
     <% if @users.any? %>
       <ul class="users follow">
         <% @users.each do |user| %>
-        <div class="border border-success rounded mb-3 pl-2">
-          <b class="mb-0 pt-1"><%= link_to user.name, user %></b>
-          <p class="mb-1">@<%= user.uid %></p>
-        </div>
-      <% end %>
+          <div class="border border-success rounded mb-3 pl-2">
+            <b class="mb-0 pt-1">
+              <%= link_to user.name, user %>
+            </b>
+            <p class="mb-1">
+              @<%= user.uid %>
+            </p>
+          </div>
+        <% end %>
       </ul>
       <%= will_paginate @users %>
     <% end %>

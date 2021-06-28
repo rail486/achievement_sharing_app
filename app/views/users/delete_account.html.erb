@@ -1,16 +1,25 @@
 <% provide(:title, 'アカウント削除') %>
-<h1 class="center mt-3 mb-5">アカウント削除</h1>
+<h1 class="center mt-3 mb-5">
+  アカウント削除
+</h1>
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <div class="border border-danger mb-3 pl-2">
-      <h5 class="mb-0 pt-1"><b><%= @user.name %></b></h5>
-      <p class="mb-1">@<%= @user.uid %></p>
+    <div class="border border-danger rounded mb-3 pl-2">
+      <b class="mb-0 pt-1">
+        <p class="name">
+          <%= @user.name %>
+        </p>
+      </b>
+      <p class="mb-1">
+        @<%= @user.uid %>
+      </p>
     </div>
     <%= form_tag({controller:"users", action:"destroy"}, method: :delete) do %>
       <div class="form-group">
         <%= label_tag "パスワード" %>
         <%= password_field_tag :password, nil, class: "form-control" %>
       </div>
+
       <%= submit_tag "削除", class: "btn btn-danger btn-block" %>
     <% end %>
   </div>

@@ -1,10 +1,10 @@
 <% provide(:title, "ログイン") %>
-<h1 class="center mt-3">ログイン</h1>
-
+<h1 class="center mt-3">
+  ログイン
+</h1>
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <%= form_for(:session, url: login_path) do |f| %>
-
       <div class="form-group">
         <%= f.label :uid, "ID" %>
         <%= f.text_field :uid, class: "form-control" %>
