@@ -34,7 +34,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       redirect_to tasks_path(session[:date]), success: "タスク#{@task.content}を更新しました"
     else
-      flash.now[:danger] = "タスク#{@task.content}を更新しました"
+      flash.now[:danger] = "タスク#{@task.content}を更新できませんでした"
       render 'edit'
     end
   end

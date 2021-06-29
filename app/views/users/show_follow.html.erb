@@ -2,10 +2,8 @@
 <div class="row">
   <div class="col-md-4 offset-md-1">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
-      <b class="mb-0 pt-1">
-        <p class="name">
-          <%= @user.name %>
-        </p>
+      <b class="users mb-0 pt-1">
+        <%= link_to @user.name, @user %>
       </b>
       <p class="mb-1">
         @<%= @user.uid %>
