@@ -4,18 +4,21 @@
 
     <%= form_with model: @task do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :content %>
+      <p></p>
+      <p></p>
+      <%= f.label :タスク %>
       <%= f.text_field :content, class: 'form-control' %>
-
-      <%= f.label :achievement %>
+      <p></p>
+      <%= f.label :達成度 %>
       <%= f.number_field :achievement, class: 'form-control' %>
-
-      <%= f.submit "Create task", class: "btn btn-primary" %>
+      <p></p>
+      <%= f.submit "タスクを追加する", class: "btn btn-success" %>
     <% end %>
 
-    <br>
-    <%= link_to "戻る", tasks_path(session[:date]), class: "btn-square-little-rich" %>
+<p></p>
+
+    <button type="button" onclick="history.back()" class="btn btn-outline-success">戻る</button>
+
 
   </div>
 </div>

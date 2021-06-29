@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy, :following, :followers]
+  before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy, :index, :show, :setting, :following, :followers]
   before_action :correct_user,   only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
 
   def index

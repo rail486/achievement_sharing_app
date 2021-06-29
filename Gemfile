@@ -57,6 +57,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'will_paginate-bootstrap4'
 gem 'rexml'
+gem 'factory_bot_rails'
 gem 'simple_calendar','~>2.4'
 
 group :development, :test do

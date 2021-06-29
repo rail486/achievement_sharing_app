@@ -47,4 +47,12 @@ module SessionsHelper
       session[:forwarding_url] = request.original_url
     end
   end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "ログインしてください"
+      redirect_to "/login"
+    end
+  end
 end
