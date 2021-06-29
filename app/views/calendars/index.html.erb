@@ -1,3 +1,5 @@
+<% provide(:title, 'カレンダー') %>
+<div class="center" id="calendar">
 <%= month_calendar do |date| %>
-  <%= link_to date.day, tasklist_path(date) %>
+  <b><%= link_to date.day, tasklist_path(date) %></b>
 <% end %>
