@@ -2,4 +2,10 @@
 <div class="center" id="calendar">
 <%= month_calendar do |date| %>
   <b><%= link_to date.day, tasklist_path(date) %></b>
+  <div>
+      <%= achievement_average(date) %>
+      <% if achievement_average(date).present? %>%
+      <% end %>
+  </div>
+
 <% end %>
