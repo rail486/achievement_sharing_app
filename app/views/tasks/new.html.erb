@@ -4,14 +4,15 @@
 
     <%= form_with model: @task do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :content %>
+      <p></p>
+      <p></p>
+      <%= f.label :タスク %>
       <%= f.text_field :content, class: 'form-control' %>
-
-      <%= f.label :achievement %>
+      <p></p>
+      <%= f.label :達成度 %>
       <%= f.number_field :achievement, class: 'form-control' %>
 
-      <%= f.submit "Create task", class: "btn btn-primary" %>
+      <%= f.submit "タスクを追加する", class: "btn btn-success" %>
     <% end %>
 
     <br>
