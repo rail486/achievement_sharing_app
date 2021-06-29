@@ -16,7 +16,8 @@
     <% end %>
 
     <br>
-    <%= link_to "戻る", tasks_path(session[:date]), class: "btn-square-little-rich" %>
+    <button type="button" onclick="history.back()" class="btn btn-outline-success">戻る</button>
+
 
   </div>
 </div>
