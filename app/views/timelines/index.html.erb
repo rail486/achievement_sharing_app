@@ -1,4 +1,6 @@
-<h1>Timeline</h1>
+<div class="border border-success rounded mt-5 mb-3 pl-2">
+    <h1>Timeline</h1>
+</div>
 
 
 <table class = "timetable">
@@ -11,13 +13,14 @@
     </tr>
 
     <% @tasks.each do |task| %>
-     <tr>
+    <tr>
         <td><%= link_to task.user.name, task.user %></td>
         <td><%= task.user.uid %></td>
         <td><%= link_to task.date, tasklist_path(task[:date]) %></td>
         <td><%= task.content %></td>
         <td><%= task.achievement %>%</td>
-     </tr>
+    </tr>
     <% end %>
 </table>
+
 

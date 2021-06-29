@@ -13,6 +13,25 @@
     </section>
     <%= render 'follow_form' if logged_in? %>
   </div>
+
   <div class="col-md-6">
+    <div class="border border-success rounded mt-5 mb-3 pl-2">
+      <h5>現在共有中のタスク</h5>
+    </div> 
+    <table class = "task_table">
+      <tr>
+        <td>日付</td>
+        <td>内容</td>
+        <td>達成度</td>
+      </tr>
+
+      <% @tasks.each do |task| %>
+        <tr>
+         <td><%= task.date %></td>
+          <td><%= task.content %></td>
+          <td><%= task.achievement %>%</td>
+        </tr>        
+      <% end %>
+    </table>   
   </div>
 </div>

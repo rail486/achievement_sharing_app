@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tasks = current_user.feed.where(share: true).paginate(page: params[:page])
   end
 
   def new
