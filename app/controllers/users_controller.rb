@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tasks = current_user.tasks.where(share: true)
+    @tasks = @user.tasks.where(share: true)
   end
 
   def new
