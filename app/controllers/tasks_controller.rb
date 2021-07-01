@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :logged_in_user
+  before_action :correct_owner, only: [:edit, :update, :destroy, :finish, :share, :unshare]
 
   def index
     @tasks = current_user.tasks.where(date: session[:date])
@@ -65,8 +67,13 @@ class TasksController < ApplicationController
 
   private
 
-  def task_params
-    params.require(:task).permit(:content, :achievement)
-  end
+    def task_params
+      params.require(:task).permit(:content, :achievement)
+    end
 
+    def correct_owner
+      @task = Task.find(params[:id])
+      @user = @task.user.id
+      redirect_to "/calendar" unless @user == current_user
+    end
 end
