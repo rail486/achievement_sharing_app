@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
   before_action :logged_in_user
   before_action :correct_owner, only: [:edit, :update, :destroy, :finish, :share, :unshare]
+  before_action :correct_date, only: [:index, :tasklist, :new]
 
   def index
+    session[:date] = params[:format]
     @tasks = current_user.tasks.where(date: session[:date])
   end
 
@@ -76,4 +78,13 @@ class TasksController < ApplicationController
       @user = @task.user
       redirect_to "/calendar" unless @user == current_user
     end
+
+    def correct_date
+      redirect_to "/" unless date_valid?(params[:format])
+    end
+
+    def date_valid?(str)
+      !! Date.parse(str) rescue false
+    end
+      
 end
