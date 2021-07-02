@@ -6,6 +6,9 @@ ja:
         uid: ID
         password: パスワード
         password_confirmation: パスワード(確認用)
+      task:
+        content: タスク内容
+        achievement: 達成度
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

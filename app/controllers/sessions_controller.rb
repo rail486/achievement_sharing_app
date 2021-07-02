@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       else
         forget(@user)
       end
-      redirect_back_or (@user)
+      redirect_back_or "/calendar"
     else
       flash.now[:danger] = 'IDまたはパスワードが正しくありません'
       render 'new'
