@@ -1,28 +1,27 @@
 <% provide(:title, '編集') %>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 offset-md-3 mt-5">
 
     <%= form_with model: @task do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-<p></p>
-<p></p>
-<p1>
+
+      <div class="form-group">
       <%= f.label :タスク %>
       <%= f.text_field :content, class: 'form-control' %>
-</p1>
+      </div>
 
-<p></p>
-<p2>
+      <div class="form-group">
       <%= f.label :達成度 %>
       <%= f.number_field :achievement, class: 'form-control' %>
-</p2>
-<p></p>
+      </div>
+
+      <div class="center">
       <%= f.submit "変更を保存する", class: "btn btn-success" %>
+      </div>
+  
     <% end %>
 
-    <p></p>
-
-
-    <button type="button" onclick="history.back()" class="btn btn-outline-success">戻る</button>
+    <div class="center">
+    <%= link_to "戻る", tasks_path(session[:date]), class: "btn btn-outline-success mt-3" %>
   </div>
 </div>
