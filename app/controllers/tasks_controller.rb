@@ -73,7 +73,7 @@ class TasksController < ApplicationController
 
     def correct_owner
       @task = Task.find(params[:id])
-      @user = @task.user.id
+      @user = @task.user
       redirect_to "/calendar" unless @user == current_user
     end
 end
