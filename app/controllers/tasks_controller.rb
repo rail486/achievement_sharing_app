@@ -80,7 +80,7 @@ class TasksController < ApplicationController
     end
 
     def correct_date
-      redirect_to "/" unless date_valid?(params[:format])
+      redirect_to "/calendar" unless date_valid?(params[:format])
     end
 
     def date_valid?(str)
