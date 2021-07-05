@@ -1,6 +1,6 @@
 <% provide(:title, @title) %>
 <div class="row">
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-4">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
       <b class="users mb-0 pt-1">
         <%= link_to @user.name, @user %>
@@ -17,7 +17,7 @@
     </section>
     <%= render 'follow_form' if logged_in? %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 offset-md-1">
     <p class="center mt-5" id="subt">
       <%= @title %>
     </p>
