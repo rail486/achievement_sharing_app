@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy, :index, :show, :setting, :following, :followers]
-  before_action :correct_user,   only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
+  before_action :logged_in_user,          only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy, :index, :show, :setting, :following, :followers]
+  before_action :exist_user_for_profile,  only: [:show]
+  before_action :exist_user_for_settings, only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
+  before_action :correct_user,            only: [:edit_profile, :update_profile, :edit_password, :update_password, :delete_account, :destroy]
 
   def index
     @users = User.search(params[:search]).paginate(page: params[:page], per_page: 10)
@@ -107,8 +109,24 @@ class UsersController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
+    def exist_user_for_profile
+      begin
+        @user = User.find(params[:id])
+      rescue
+        redirect_to "/users"
+      end
+    end
+
+    def exist_user_for_settings
+      begin
+        @user = User.find(params[:id])
+      rescue
+        redirect_to "/settings"
+      end
+    end
+
     def correct_user
       @user = User.find(params[:id])
-      redirect_to "/calendar" unless @user == current_user
+      redirect_to "/settings" unless @user == current_user
     end
 end

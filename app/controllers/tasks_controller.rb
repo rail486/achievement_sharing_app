@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :logged_in_user
+  before_action :exist_task,    only: [:edit, :update, :destroy, :finish, :share, :unshare]
   before_action :correct_owner, only: [:edit, :update, :destroy, :finish, :share, :unshare]
-  before_action :correct_date, only: [:index, :tasklist, :new]
+  before_action :correct_date,  only: [:index, :tasklist, :new]
 
   def index
     session[:date] = params[:format]
@@ -71,6 +72,14 @@ class TasksController < ApplicationController
 
     def task_params
       params.require(:task).permit(:content, :achievement)
+    end
+
+    def exist_task
+      begin
+        @task = Task.find(params[:id])
+      rescue
+        redirect_to "/settings"
+      end
     end
 
     def correct_owner

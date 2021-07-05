@@ -1,6 +1,6 @@
 <% provide(:title, 'プロフィール') %>
 <div class="row">
-  <div class="col-md-4 offset-md-1">
+  <div class="col-md-4">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
       <b class="users mb-0 pt-1">
         <%= link_to @user.name, @user %>
@@ -17,21 +17,23 @@
     </section>
     <%= render 'follow_form' if logged_in? %>
   </div>
-  <div class="col-md-6">
+  <div class="col-md-8">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
-      <h5>現在共有中のタスク</h5>
+      <p class="profile_task center mt-1 mb-1">
+        現在共有中のタスク
+      </p>
     </div> 
-    <table class = "task_table mb-3">
-      <tr>
-        <td>日付</td>
-        <td>内容</td>
-        <td>達成度</td>
+    <table class="task_table mb-3">
+      <tr class="nowrap center">
+        <th class="profile_date">日付</th>
+        <th class="profile_content">内容</th>
+        <th class="profile_achievement">達成度</th>
       </tr>
       <% @tasks.each do |task| %>
         <tr>
-         <td><%= task.date %></td>
+          <td class="nowrap center"><%= task.date %></td>
           <td><%= task.content %></td>
-          <td><%= task.achievement %>%</td>
+          <td class="nowrap center"><%= task.achievement %>%</td>
         </tr>        
       <% end %>
     </table>
