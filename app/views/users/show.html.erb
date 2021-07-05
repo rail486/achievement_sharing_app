@@ -21,13 +21,12 @@
     <div class="border border-success rounded mt-5 mb-3 pl-2">
       <h5>現在共有中のタスク</h5>
     </div> 
-    <table class = "task_table">
+    <table class = "task_table mb-3">
       <tr>
         <td>日付</td>
         <td>内容</td>
         <td>達成度</td>
       </tr>
-
       <% @tasks.each do |task| %>
         <tr>
          <td><%= task.date %></td>
@@ -35,6 +34,7 @@
           <td><%= task.achievement %>%</td>
         </tr>        
       <% end %>
-    </table>   
+    </table>
+    <%= will_paginate @tasks %>
   </div>
 </div>
