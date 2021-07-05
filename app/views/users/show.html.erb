@@ -24,16 +24,16 @@
       </p>
     </div> 
     <table class="task_table mb-3">
-      <tr class="center">
-        <th id="date">日付</th>
-        <th id ="content">内容</th>
-        <th id="achievement">達成度</th>
+      <tr class="nowrap center">
+        <th class="profile_date">日付</th>
+        <th class="profile_content">内容</th>
+        <th class="profile_achievement">達成度</th>
       </tr>
       <% @tasks.each do |task| %>
         <tr>
-          <td class="center"><%= task.date %></td>
+          <td class="nowrap center"><%= task.date %></td>
           <td><%= task.content %></td>
-          <td><%= task.achievement %>%</td>
+          <td class="nowrap center"><%= task.achievement %>%</td>
         </tr>        
       <% end %>
     </table>

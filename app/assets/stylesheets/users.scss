@@ -57,13 +57,18 @@
   width: 100%;
 }
 
-#date {
-  width: 20%;
+.nowrap {
+  white-space: nowrap;
 }
 
-#content {
-  width: 65%;
-}
-#achievement {
+.profile_date {
   width: 15%;
+}
+
+.profile_content {
+  width: 75%;
+}
+
+.profile_achievement {
+  width: 10%;
 }

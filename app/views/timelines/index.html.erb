@@ -7,7 +7,7 @@
 
 <table class = "timetable">
     <tr class = "nowrap">
-        <th>名前</th>
+        <th>表示名</th>
         <th>ID</th>
         <th>日付</th>
         <th>内容</th>
@@ -18,9 +18,9 @@
     <tr>
         <td><%= link_to task.user.name, task.user %></td>
         <td><%= task.user.uid %></td>
-        <td><%= link_to task.date, tasklist_path(task[:date]) %></td>
+        <td class = "nowrap"><%= link_to task.date.strftime('%m/%d'), tasklist_path(task[:date]) %></td>
         <td><%= task.content %></td>
-        <td><%= task.achievement %>%</td>
+        <td class = "nowrap"><%= task.achievement %>%</td>
     </tr>
     <% end %>
 </table>
