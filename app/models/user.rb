@@ -44,9 +44,9 @@ class User < ApplicationRecord
 
   def self.search(search)
     if search
-      User.where(['uid LIKE ?', "%#{search}%"])
+      User.where(['uid LIKE ?', "%#{search}%"]).order(:id)
     else
-      User.all
+      User.all.order(:id)
     end
   end
 

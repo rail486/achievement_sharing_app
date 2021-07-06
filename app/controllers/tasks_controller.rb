@@ -6,12 +6,12 @@ class TasksController < ApplicationController
 
   def index
     session[:date] = params[:format]
-    @tasks = current_user.tasks.where(date: session[:date])
+    @tasks = current_user.tasks.where(date: session[:date]).order(:id)
   end
 
   def tasklist
     session[:date] = params[:format]
-    @tasks = current_user.tasks.where(date: session[:date])
+    @tasks = current_user.tasks.where(date: session[:date]).order(:id)
   end
 
   def new
