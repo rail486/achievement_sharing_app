@@ -17,7 +17,7 @@
     <% @tasks.each do |task| %>
     <tr>
         <td><%= link_to task.user.name, task.user %></td>
-        <td><%= task.user.uid %></td>
+        <td>@<%= task.user.uid %></td>
         <td class = "nowrap"><%= link_to task.date.strftime('%m/%d'), tasklist_path(task[:date]) %></td>
         <td><%= task.content %></td>
         <td class = "nowrap"><%= task.achievement %>%</td>
