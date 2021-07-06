@@ -78,7 +78,7 @@ class TasksController < ApplicationController
       begin
         @task = Task.find(params[:id])
       rescue
-        redirect_to "/settings"
+        redirect_to "/calendar"
       end
     end
 
