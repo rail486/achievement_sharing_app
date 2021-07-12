@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   post    '/login'                    => 'sessions#create'
   delete  '/logout'                   => 'sessions#destroy'
 
-  get     'calendar'                  => 'calendars#index'
+  get     '/calendar'                  => 'calendars#index'
 
-  get     'tasklist'                  => 'tasks#tasklist'
-  get     'taskedit'                  => 'tasks#index'
+  get     '/tasklist'                  => 'tasks#tasklist'
+  get     '/taskedit'                  => 'tasks#index'
 
-  get     'timeline'                  => 'timelines#index'
+  get     '/timeline'                  => 'timelines#index'
 
   resources :users do
     member do
