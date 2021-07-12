@@ -4,22 +4,19 @@ class TasksController < ApplicationController
   before_action :correct_owner, only: [:edit, :update, :destroy, :finish, :share, :unshare]
   before_action :correct_date,  only: [:index, :tasklist, :new]
 
-  def index
-    session[:date] = params[:format]
-    @tasks = current_user.tasks.where(date: session[:date]).order(:id)
-  end
-
   def tasklist
     session[:date] = params[:format]
     @tasks = current_user.tasks.where(date: session[:date]).order(:id)
   end
 
-  def new
-    @task = current_user.tasks.build()
+  def index
+    session[:date] = params[:format]
+    @tasks = current_user.tasks.where(date: session[:date]).order(:id)
   end
 
-  def edit
-    @task = Task.find(params[:id])
+  def new
+    session[:date] = params[:format]
+    @task = current_user.tasks.build()
   end
 
   def create
@@ -32,6 +29,10 @@ class TasksController < ApplicationController
       flash.now[:danger] = "タスク#{@task.content}を保存できませんでした"
       render 'new'
     end
+  end
+
+  def edit
+    @task = Task.find(params[:id])
   end
 
   def update
@@ -52,19 +53,19 @@ class TasksController < ApplicationController
 
   def finish
     @task = Task.find(params[:id])
-    @task.update_attribute(:achievement, 100)
+    @task.finish_task
     redirect_to tasks_path(session[:date]), success: "タスク#{@task.content}を完了しました"
   end
 
   def share
     @task = Task.find(params[:id])
-    @task.update_attribute(:share, true)
+    @task.share_task
     redirect_to tasks_path(session[:date]), success: "タスク#{@task.content}を共有しました"
   end
 
   def unshare
     @task = Task.find(params[:id])
-    @task.update_attribute(:share, false)
+    @task.unshare_task
     redirect_to tasks_path(session[:date]), success: "タスク#{@task.content}の共有をやめました"
   end
 
