@@ -12,13 +12,13 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { in: 10..30 }, format: { with: /\A[a-zA-Z0-9]+\z/, message: :invalid_password }, allow_nil: true
 
-  def User.digest(string)
+  def User.digest(str)
     if ActiveModel::SecurePassword.min_cost
       cost = BCrypt::Engine::MIN_COST
     else
       cost = BCrypt::Engine.cost
     end
-    BCrypt::Password.create(string, cost: cost)
+    BCrypt::Password.create(str, cost: cost)
   end
 
   def User.new_token
@@ -42,7 +42,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  def self.search(search)
+  def User.search(search)
     if search
       User.where(['uid LIKE ?', "%#{search}%"]).order(:id)
     else
