@@ -1,26 +1,26 @@
 <% provide(:title, 'タイムライン') %>
 
 <div class="border border-success rounded mt-5 mb-3 pl-2">
-    <h1>Timeline</h1>
+  <h1>Timeline</h1>
 </div>
 
 
 <table class = "timetable">
-    <tr class = "nowrap">
-        <th>表示名</th>
-        <th>ID</th>
-        <th>日付</th>
-        <th>内容</th>
-        <th>達成度</th>
-    </tr>
+  <tr class = "nowrap">
+    <th>表示名</th>
+    <th>ID</th>
+    <th>日付</th>
+    <th>内容</th>
+    <th>達成度</th>
+  </tr>
 
-    <% @tasks.each do |task| %>
+  <% @tasks.each do |task| %>
     <tr>
-        <td><%= link_to task.user.name, task.user %></td>
-        <td>@<%= task.user.uid %></td>
-        <td class = "nowrap"><%= link_to task.date.strftime('%m/%d'), tasklist_path(task[:date]) %></td>
-        <td><%= task.content %></td>
-        <td class = "nowrap"><%= task.achievement %>%</td>
+      <td><%= link_to task.user.name, task.user %></td>
+      <td>@<%= task.user.uid %></td>
+      <td class = "nowrap"><%= link_to task.date.strftime('%m/%d'), tasklist_path(task[:date]) %></td>
+      <td><%= task.content %></td>
+      <td class = "nowrap"><%= task.achievement %>%</td>
     </tr>
-    <% end %>
+  <% end %>
 </table>

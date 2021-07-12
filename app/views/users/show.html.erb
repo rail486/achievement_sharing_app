@@ -12,17 +12,21 @@
         <%= @user.introduction %>
       </div>
     </div>
+
     <section class="stats ml-2 mb-1">
       <%= render 'shared/stats' %>
     </section>
+
     <%= render 'follow_form' if logged_in? %>
   </div>
+
   <div class="col-md-8">
     <div class="border border-success rounded mt-5 mb-3 pl-2">
       <p class="profile_task center mt-1 mb-1">
         現在共有中のタスク
       </p>
     </div> 
+
     <table class="task_table mb-3">
       <tr class="nowrap center">
         <th class="profile_date">日付</th>
@@ -37,6 +41,7 @@
         </tr>        
       <% end %>
     </table>
+
     <%= will_paginate @tasks %>
   </div>
 </div>

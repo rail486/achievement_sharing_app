@@ -12,15 +12,19 @@
         <%= @user.introduction %>
       </div>
     </div>
+
     <section class="stats ml-2 mb-1">
       <%= render 'shared/stats' %>
     </section>
+
     <%= render 'follow_form' if logged_in? %>
   </div>
+
   <div class="col-md-6 offset-md-1">
     <p class="center mt-5" id="subt">
       <%= @title %>
     </p>
+
     <% if @users.any? %>
       <ul class="users follow">
         <% @users.each do |user| %>
@@ -34,6 +38,7 @@
           </div>
         <% end %>
       </ul>
+
       <%= will_paginate @users %>
     <% end %>
   </div>
