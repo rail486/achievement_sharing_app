@@ -44,7 +44,7 @@ class TasksController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
@@ -96,5 +96,4 @@ class TasksController < ApplicationController
     def date_valid?(str)
       !! Date.parse(str) rescue false
     end
-      
 end
