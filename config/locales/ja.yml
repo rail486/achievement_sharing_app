@@ -4,6 +4,7 @@ ja:
       user:
         name: 表示名
         uid: ID
+        introduction: 自己紹介
         password: パスワード
         password_confirmation: パスワード(確認用)
       task:
