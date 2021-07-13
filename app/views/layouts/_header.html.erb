@@ -4,18 +4,10 @@
       <%= link_to "Achievement Sharing App", "/calendar", class: "navbar-brand", id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to Date.today.strftime('%m/%d'), "/tasklist.#{Date.today.strftime}", class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "カレンダー", "/calendar", class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "ユーザ一覧", "/users", class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "タイムライン", "/timeline", class: "nav-link" %>
-          </li>
+          <li><%= link_to Date.today.strftime('%m/%d'), "/tasklist.#{Date.today.strftime}", class: "nav-link" %></li>
+          <li><%= link_to "カレンダー", "/calendar", class: "nav-link" %></li>
+          <li><%= link_to "ユーザ一覧", "/users", class: "nav-link" %></li>
+          <li><%= link_to "タイムライン", "/timeline", class: "nav-link" %></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               アカウント
@@ -23,8 +15,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <%= link_to "プロフィール", current_user, class: "dropdown-item" %>
               <%= link_to "設定", "/settings", class: "dropdown-item" %>
-              <div class="dropdown-divider">
-              </div>
+              <div class="dropdown-divider"></div>
               <%= link_to "ログアウト", logout_path, method: :delete, class: "dropdown-item" %>
             </div>
           </li>
@@ -34,12 +25,8 @@
       <%= link_to "Achievement Sharing App", "/", class: "navbar-brand", id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-          <li>
-            <%= link_to "新規登録", "/signup", class: "nav-link" %>
-          </li>
-          <li>
-            <%= link_to "ログイン", "/login", class: "nav-link" %>
-          </li>
+          <li><%= link_to "新規登録", "/signup", class: "nav-link" %></li>
+          <li><%= link_to "ログイン", "/login", class: "nav-link" %></li>
         </ul>
       </nav>
     <% end %>

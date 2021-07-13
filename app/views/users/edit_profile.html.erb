@@ -1,7 +1,5 @@
 <% provide(:title, 'プロフィール変更') %>
-<h1 class="center mt-3">
-  プロフィール変更
-</h1>
+<h1 class="center mt-3">プロフィール変更</h1>
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <%= form_for @user, url: {action: "update_profile"} do |f| %>

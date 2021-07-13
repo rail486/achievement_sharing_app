@@ -11,13 +11,13 @@ Rails.application.routes.draw do
   get     '/login'                    => 'sessions#new'
   post    '/login'                    => 'sessions#create'
   delete  '/logout'                   => 'sessions#destroy'
-  
-  get     'calendar'                  => 'calendars#index'
 
-  get     'tasklist'                  => 'tasks#tasklist'
-  get     'taskedit'                  => 'tasks#index'
+  get     '/calendar'                  => 'calendars#index'
 
-  get     'timeline'                  => 'timelines#index'
+  get     '/tasklist'                  => 'tasks#tasklist'
+  get     '/taskedit'                  => 'tasks#index'
+
+  get     '/timeline'                  => 'timelines#index'
 
   resources :users do
     member do
